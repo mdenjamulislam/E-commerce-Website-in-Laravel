@@ -23,6 +23,11 @@
           padding: 10px;
           border: 1px solid #ddd;
         }
+        table tr img {
+          width: 64px;
+          height: 64px;
+          border-radius: 2px;
+        }
     </style>
 
   </head>
@@ -35,8 +40,8 @@
         <!-- partial -->
         <div class="main-panel">
             <div class="content-wrapper">
-                <div class="text-center py-5">
-                    <h2>All Product</h2>
+                <div class="text-center py-4">
+                    <h2 class="heading">All Product</h2>
                 </div>
                 <!-- Catagory Table -->
                 <table class="table-center">
@@ -49,6 +54,19 @@
                     <th>Discount Price</th>
                     <th>Product Image</th>
                   </tr>
+                  @foreach($product as $product)
+                  <tr>
+                    <td>{{$product->title}}</td>
+                    <td>{{$product->description}}</td>
+                    <td>{{$product->quantity}}</td>
+                    <td>{{$product->catagory}}</td>
+                    <td>{{$product->price}}</td>
+                    <td>{{$product->discount_price}}</td>
+                    <td>
+                      <img src="product/{{$product->image}}" alt="{{$product->image}}">
+                    </td>
+                  </tr>
+                  @endforeach
                 </table>
             </div>
         </div>
