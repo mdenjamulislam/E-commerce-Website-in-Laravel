@@ -52,7 +52,7 @@
         
             <!-- Product Table -->
             <div class="text-left py-5">
-                <h2 class="heading">Add Product</h2>
+                <h2 class="heading">Add New Product</h2>
 
                 <form class="form-group" action="{{url('/add_product')}}" method="POST" enctype="multipart/form-data">
                     @csrf

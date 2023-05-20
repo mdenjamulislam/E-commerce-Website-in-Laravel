@@ -13,8 +13,6 @@
         }
 
         .table-center {
-          width: 90%;
-          margin: 0 auto;
           border: 1px solid #ddd;
           text-align: center;
           margin-top: 30px;
@@ -41,7 +39,7 @@
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="text-center py-4">
-                    <h2 class="heading">All Product</h2>
+                    <h2 class="heading">All Products</h2>
                 </div>
                 <!-- Catagory Table -->
                 <table class="table-center">
@@ -76,6 +74,9 @@
                   </tr>
                   @endforeach
                 </table>
+                <div class="mt-3">
+                  <a class="btn btn-success" href="{{url('/view_product')}}">Add New Product</a>
+                </div>
             </div>
         </div>
       <!-- page-body-wrapper ends -->
