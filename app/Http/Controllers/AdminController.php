@@ -95,9 +95,12 @@ class AdminController extends Controller
         $product->catagory = $request->catagory;
 
         $image = $request->image;
-        $imagename = time().'.'.$image->getClientOriginalExtension();
-        $request->image->move('product', $imagename);
-        $product->image = $imagename;
+        if ($image) {
+            $imagename = time().'.'.$image->getClientOriginalExtension();
+            $request->image->move('product', $imagename);
+            $product->image = $imagename;
+        }
+        
 
         // if($request->hasFile('image')){
         //     $file = $request->file('image');
