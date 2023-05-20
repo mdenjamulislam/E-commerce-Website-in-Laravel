@@ -72,7 +72,7 @@
               <span class="menu-title">Products</span>
               <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="ui-basic">
+            <div class="" id="ui-basic"> <!-- class="collapse" If I use collapse then dropdown item not visiable. -->
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="{{ url('view_product') }}">Add Product</a></li>
                 <li class="nav-item"> <a class="nav-link" href="{{ url('show_product') }}">Show Product</a></li>
