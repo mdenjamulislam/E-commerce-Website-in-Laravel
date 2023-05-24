@@ -42,4 +42,4 @@ Route::get('/update_product/{id}', [AdminController::class, 'update_product']); 
 Route::post('/update_product_confirm/{id}', [AdminController::class, 'update_product_confirm']); // Edit or Update Product
 
 Route::get('/product_details/{id}', [HomeController::class, 'product_details']);; // Product Details
-Route::get('/add_to_cart/{id}', [HomeController::class, 'add_to_cart']); // Add to Cart
+Route::post('/add_to_cart/{id}', [HomeController::class, 'add_to_cart']); // Add to Cart

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
 use App\Models\Product;
+use App\Models\Cart;
 
 class HomeController extends Controller
 {
@@ -38,9 +39,34 @@ class HomeController extends Controller
     }
 
     // This function for add to cart 
-    public function add_to_cart($id)
+    public function add_to_cart(Request $request, $id)
     {
-        return view('home.add_to_cart');
+        if (Auth::id()) 
+        {
+            $user = User::find(Auth::id());
+            $product = Product::find($id);
+
+            $cart = new Cart();
+            $cart->user_id = $user->id;
+            $cart->name = $user->name;
+            $cart->email = $user->email;
+            $cart->phone = $user->phone;
+            $cart->address = $user->address;
+
+            $cart->product_id = $product->id;
+            $cart->product_title = $product->title;
+            $cart->price = $product->price;
+            $cart->image = $product->image;
+            $cart->quantity = $request->quantity;
+            $cart->save();
+
+            return redirect()->back();
+
+
+        }else 
+        {
+            return redirect()->route('login')->with('message', 'Please login first'); 
+        }
     }
 
     
