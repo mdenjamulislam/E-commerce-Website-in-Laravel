@@ -55,9 +55,22 @@ class HomeController extends Controller
 
             $cart->product_id = $product->id;
             $cart->product_title = $product->title;
-            $cart->price = $product->price;
             $cart->image = $product->image;
             $cart->quantity = $request->quantity;
+            // This is for price
+            if ($product->discount_price != NULL) 
+            {
+                $cart->price = $product->discount_price;
+            }else {
+                $cart->price = $product->price;
+            }
+            // This is for total price
+            if ($product->discount_price == NULL) {
+                $cart->total_price = $product->price * $request->quantity;
+            }else {
+                $cart->total_price = $product->discount_price * $request->quantity;
+            }
+
             $cart->save();
 
             return redirect()->back();
@@ -67,6 +80,26 @@ class HomeController extends Controller
         {
             return redirect()->route('login')->with('message', 'Please login first'); 
         }
+    }
+
+    public function view_cart()
+    {
+        if (Auth::id())
+        {
+            $cart = Cart::where('user_id', Auth::id())->get();
+            return view('home.view_cart', compact('cart'));
+        }else 
+        {
+            return redirect()->route('login')->with('message', 'Please login first'); 
+        }
+        
+    }
+
+    public function delete_cart($id)
+    {
+        $cart = Cart::find($id);
+        $cart->delete();
+        return redirect()->back();
     }
 
     

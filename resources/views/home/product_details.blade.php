@@ -61,8 +61,19 @@
                     </div>
                     <h2 class="pb-2 pt-3 display-5">Product Description</h2>
                     <p>{{$product->description}}</p>
+                    
                     <div class="btn-box mt-5 pt-3 border-top">
-                        <a class="btn btn-success" href="{{url('add_to_cart', $product->id)}}">Add to Cart</a>
+                        <form action="{{url('add_to_cart', $product->id)}}" method="POST">
+                            @csrf
+                            <div class="row">
+                                <div class="col-md-4 offset-md-2">
+                                    <input type="number" name="quantity" value="1" min="1">
+                                </div>
+                                <div class="col-md-4">
+                                    <input class="" type="submit" value="Add To Cart">
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
 
